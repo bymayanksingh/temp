@@ -4,12 +4,13 @@ import { Menu, X, Moon, Sun } from 'lucide-react';
 import { NavLink } from './NavLink';
 import { Button } from '../shared/Button';
 import { Container } from '../shared/Container';
+import { useTheme } from '../../hooks/useTheme';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,18 +24,13 @@ export function Header() {
     setIsMenuOpen(false);
   }, [location]);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
-
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm' : 'bg-transparent'
     }`}>
       <Container>
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-bold tracking-tighter">
+          <Link to="/" className="text-2xl font-bold tracking-tighter text-gradient">
             Portfolio
           </Link>
 

@@ -1,10 +1,18 @@
+@import './styles/typography.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: theme('colors.blue.600');
+  --secondary-color: theme('colors.purple.600');
+  --font-family: 'Inter';
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: var(--font-family), system-ui, sans-serif;
   }
 
   body {
@@ -32,6 +40,14 @@
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text;
   }
 }
 

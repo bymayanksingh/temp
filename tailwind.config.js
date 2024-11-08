@@ -5,7 +5,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-family)', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        primary: 'var(--primary-color)',
+        secondary: 'var(--secondary-color)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
@@ -17,4 +21,9 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    { pattern: /bg-(blue|purple|green|red)-500/ },
+    { pattern: /from-(blue|purple|green|red)-600/ },
+    { pattern: /to-(blue|purple|green|red)-600/ },
+  ],
 };
